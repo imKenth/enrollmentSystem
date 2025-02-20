@@ -1,0 +1,113 @@
+1. Student Class
+Description:
+Represents a student in the enrollment system. It stores basic student information like personal details and a list of enrolled courses.
+
+Attributes:
+studentID (String): A unique identifier for the student.
+firstName (String): The first name of the student.
+lastName (String): The last name of the student.
+email (String): The student's email address.
+phone (String): The student's phone number.
+courses (List<Course>): A list of courses that the student is enrolled in.
+
+Methods:
+getStudentID(): Returns the student’s unique ID.
+getFirstName(): Returns the student's first name.
+getLastName(): Returns the student's last name.
+getEmail(): Returns the student's email address.
+getPhone(): Returns the student's phone number.
+enroll(Course course): Enrolls the student in a course.
+getCourses(): Returns a list of courses the student is enrolled in.
+
+
+
+2. Course Class
+Description:
+Represents a course in the system. It stores details about the course, such as the name, course code, and schedule, along with a list of students enrolled in the course.
+
+Attributes:
+courseID (String): A unique identifier for the course.
+courseName (String): The name of the course.
+courseCode (String): A code associated with the course (e.g., CS101).
+schedule (String): A description of the course schedule (e.g., "MWF 10:00 AM - 11:30 AM").
+students (List<Student>): A list of students enrolled in the course.
+Methods:
+getCourseID(): Returns the course's unique ID.
+getCourseName(): Returns the name of the course.
+getCourseCode(): Returns the code of the course.
+getSchedule(): Returns the schedule description.
+getStudents(): Returns a list of students enrolled in the course.
+addStudent(Student student): Adds a student to the course's enrolled students list.
+3. Enrollment Class
+Description:
+Represents the enrollment relationship between a student and a course. This class is used to manage the enrollment process and track the status of the enrollment.
+
+Attributes:
+student (Student): The student being enrolled in the course.
+course (Course): The course in which the student is being enrolled.
+enrollmentDate (LocalDate): The date the student was enrolled in the course.
+status (String): The enrollment status (e.g., "Enrolled", "Completed", "Dropped").
+Methods:
+getStudent(): Returns the student involved in the enrollment.
+getCourse(): Returns the course the student is enrolled in.
+getEnrollmentDate(): Returns the date the enrollment occurred.
+getStatus(): Returns the enrollment status.
+setStatus(String status): Updates the enrollment status.
+4. Instructor Class
+Description:
+Represents an instructor or professor who is teaching a course. This class holds the instructor’s details and the courses they teach.
+
+Attributes:
+instructorID (String): A unique identifier for the instructor.
+firstName (String): The first name of the instructor.
+lastName (String): The last name of the instructor.
+email (String): The instructor's email address.
+courses (List<Course>): A list of courses the instructor is teaching.
+Methods:
+getInstructorID(): Returns the instructor’s unique ID.
+getFirstName(): Returns the first name of the instructor.
+getLastName(): Returns the last name of the instructor.
+getEmail(): Returns the email address of the instructor.
+getCourses(): Returns a list of courses that the instructor teaches.
+5. Department Class
+Description:
+Represents an academic department. This class is used to manage a list of courses offered by a department and the instructors within that department.
+
+Attributes:
+departmentID (String): A unique identifier for the department.
+departmentName (String): The name of the department (e.g., "Computer Science").
+courses (List<Course>): A list of courses offered by the department.
+instructors (List<Instructor>): A list of instructors in the department.
+Methods:
+getDepartmentID(): Returns the department's unique ID.
+getDepartmentName(): Returns the name of the department.
+getCourses(): Returns a list of courses offered by the department.
+getInstructors(): Returns a list of instructors in the department.
+addCourse(Course course): Adds a course to the department.
+addInstructor(Instructor instructor): Adds an instructor to the department.
+6. EnrollmentManager Class
+Description:
+This class manages the enrollment operations, such as enrolling students in courses, checking course availability, and managing conflicts in schedules.
+
+Attributes:
+enrollments (List<Enrollment>): A list of all current enrollments in the system.
+Methods:
+enrollStudentInCourse(Student student, Course course): Enrolls a student in a course.
+getEnrollmentsByStudent(Student student): Returns a list of enrollments for a specific student.
+getEnrollmentsByCourse(Course course): Returns a list of enrollments for a specific course.
+dropCourse(Student student, Course course): Drops a student from a course.
+getAvailableCourses(): Returns a list of courses that students can currently enroll in.
+7. Schedule Class
+Description:
+This class is responsible for managing the schedules of students and courses. It helps in tracking when courses take place and avoids scheduling conflicts for students.
+
+Attributes:
+courseID (String): The ID of the course.
+scheduleDetails (String): The timing details of the course (e.g., "MWF 10:00 AM - 11:30 AM").
+studentSchedule (Map<Student, String>): A map of students and their corresponding schedules.
+Methods:
+getScheduleForCourse(Course course): Returns the schedule of a specific course.
+getScheduleForStudent(Student student): Returns the schedule of a specific student.
+isScheduleConflict(Student student, Course course): Checks if there is a scheduling conflict for a student with a specific course.
+Conclusion:
+These classes form the core structure of an enrollment system in Java. You would have methods to interact with each other and allow for efficient management of students, courses, instructors, and enrollments. The relationships between students and courses would be central to the system, and the classes support various actions such as enrolling, dropping, and managing schedules.
