@@ -8,19 +8,21 @@ public class Student {
        private String lastName;
        private String email;
        private String phone;
-       private List<String> courses = new ArrayList<>();
-       private Map<String, Student> l = new HashMap<>();
+       private List<Course> courses;
 
-       private String fullName = firstName + " " + middleName + " " + lastName;
 
-       public void Student(String studentID, String fullName, String email, String phone){
+       public Student(String studentID, String firstName, String middleName, String lastName, String email, String phone){
            this.studentID = studentID;
-           this.fullName = fullName;
+           this.firstName = firstName;
+           this.middleName = middleName;
+           this.lastName = lastName;
            this.email = email;
            this.phone = phone;
+           this.courses = new ArrayList<>();
        }
 
-       public String getStudentID(){
+
+    public String getStudentID(){
            return studentID;
        }
 
@@ -37,28 +39,43 @@ public class Student {
        }
 
        public String getEmail(){
-           return email;
+           if(email.contains("@") && email.contains(".")){
+               return email;
+           } else {
+               return "Invalid Format!";
+           }
        }
 
        public String getPhone(){
            return phone;
        }
 
-       public List<String> getCourses(){
+       public void enrollCourse(Course course){
+           courses.add(course);
+           System.out.print("Enroll in: " +course.getCourseName());
+       }
 
-           courses.add("Bachelor of Science in Information Technology");
-           courses.add("Bachelor of Science in Computer Science");
-           courses.add("Bachelor of Science in Information Systems");
-           courses.add("Bachelor of Library and Information Science");
-           courses.add("Bachelor of Science in Entertainment and Multimedia Computing – Digital Animation");
-           courses.add("Bachelor of Science in Entertainment and Multimedia Computing – Game Development");
-           courses.add("Bachelor of Arts in Multimedia Arts");
+       public List<Course> getCourses(){
+         return courses;
+       }
+
+       public void chooseCourses(){
+           List<Course> availableCourses = new ArrayList<>();
+           availableCourses.add(new Course("1","Bachelor of Science in Information Technology", "IT101", "MTW"));
+           availableCourses.add(new Course("2", "Bachelor of Science in Computer Science", "CS101", "TTh"));
+           availableCourses.add(new Course("3", "Bachelor of Science in Information Systems", "IS101", "MWF"));
 
            for(int i = 0; i < courses.size(); i++){
                System.out.println(i +". " +courses.get(i));
            }
 
-           return courses;
+           Scanner sc = new Scanner(System.in);
+           System.out.print("Choose a course to enroll: ");
+           int index = sc.nextInt();
+           if(index >= 0 && index < courses.size()){
+               System.out.print("Enrolled in: " +courses.get(index));
+           } else {
+               System.out.print("Invalid course selection");
+           }
        }
-
 }
