@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Student {
 
@@ -10,6 +9,7 @@ public class Student {
        private String email;
        private String phone;
        private List<String> courses = new ArrayList<>();
+       private Map<String, Student> l = new HashMap<>();
 
        private String fullName = firstName + " " + middleName + " " + lastName;
 
@@ -46,10 +46,17 @@ public class Student {
 
        public List<String> getCourses(){
 
-           courses.add(1,"BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY");
-           courses.add(2, "BACHELOR OF SCIENCE IN COMPUTER SCIENCE");
+           courses.add("Bachelor of Science in Information Technology");
+           courses.add("Bachelor of Science in Computer Science");
+           courses.add("Bachelor of Science in Information Systems");
+           courses.add("Bachelor of Library and Information Science");
+           courses.add("Bachelor of Science in Entertainment and Multimedia Computing – Digital Animation");
+           courses.add("Bachelor of Science in Entertainment and Multimedia Computing – Game Development");
+           courses.add("Bachelor of Arts in Multimedia Arts");
 
-           String listCourses = courses.get(1);
+           for(int i = 0; i < courses.size(); i++){
+               System.out.println(i +". " +courses.get(i));
+           }
 
            return courses;
        }
